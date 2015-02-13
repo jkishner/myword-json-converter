@@ -8,4 +8,6 @@ More info TK. For now, [read this blog post](http://thoughts.jeffreykishner.com/
 To Do
 =====
 
-* Add support for the following: authorwebsite, titlefont, bodyfont
+* Add support for the following: `authorwebsite`, `titlefont`, `bodyfont`
+* enable localStorage for `authorname`, `authorwebsite`
+* provide default image if `img` is undefined
