@@ -1,0 +1,51 @@
+<html>
+<head>
+ <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<script>
+function myword(form) {
+var title=form.title.value;
+var author=form.author.value;
+var img=form.img.value;
+var text=form.text.value;
+text=text.replace(/"/g, '\\"');
+essay=text.split("\n");
+var output='{';
+output+='"title": "' + title + '",';
+output+='"authorname": "' + author + '",';
+var d = new Date();
+var date = d.toUTCString();
+output+='"when": "' + date + '",';
+output+='"img": "' + img+ '",';
+output+='"subs": [';
+var count = essay.length;
+count = count - 1;
+for (i=0;i<count;i++) {
+	output+='"' + essay[i] + '",';
+	}
+output+='"' + essay[i] + '"]}';
+document.getElementById("results").innerHTML=output;
+}
+</script>
+<div class="container">
+<form>
+<p>title <input type="text" name="title"></p>
+<p>author <input type="text" name="author"></p>
+<p>img <input type="url" name="img" size="40"><br>
+You can use this: 
+<code>http://cdn.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-2-full.jpg</code></p>
+write here. hit return for new paragraph. <br/ >
+<textarea name="text" cols="40" rows="7"></textarea>
+<input type="button" name="button" value="convert" 
+onClick="myword(this.form)">
+</form>
+<p>Put the following in a text file. <br>
+Give the filename a title and follow it by <code>.json</code>. <br>
+Upload to your server, or make it shareable via Dropbox.<br>
+Append that url to <code>http://myword.io/?url=</code></p>
+<textarea id="results" cols="40" rows="7"></textarea>
+</div>
+</body>
+</html>
+
