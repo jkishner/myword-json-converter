@@ -15,5 +15,5 @@ Update
 
 **2015-02-13**
 
-* added the following attributes: `authorwebsite`, `description`, `titlefont`, `bodyfont`
+* added the following attributes: `authorwebsite`, `description`, `titlefont`, `bodyfont`, `flMarkdown`
 * provided default black background image if `img` is not entered
