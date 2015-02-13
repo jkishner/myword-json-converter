@@ -11,6 +11,7 @@ var authorname=form.authorname.value;
 var authorwebsite=form.authorwebsite.value;
 var titlefont=form.titlefont.value;
 var bodyfont=form.bodyfont.value;
+var flMarkdown=form.flMarkdown.value;
 var img=form.img.value;
 var text=form.text.value;
 text=text.replace(/"/g, '\\"');
@@ -22,6 +23,7 @@ output+='"authorname": "' + authorname + '",';
 output+='"authorwebsite": "' + authorwebsite + '",';
 output+='"titlefont": "' + titlefont + '",';
 output+='"bodyfont": "' + bodyfont + '",';
+output+='"flMarkdown": "' + flMarkdown + '",';
 var d = new Date();
 var date = d.toUTCString();
 output+='"when": "' + date + '",';
@@ -44,12 +46,13 @@ document.getElementById("results").innerHTML=output;
 <div class="container">
 <p>&nbsp;</p>
 <form>
-<p>title <input type="text" name="title" required></p>
-<p>description <input type="text" name="description" required></p>
-<p>author name <input type="text" name="authorname" required></p>
-<p>author website <input type="text" name="authorwebsite" required></p>
-<p>title font <input type="text" name="titlefont" required></p>
-<p>body font <input type="text" name="bodyfont" required></p>
+<p>title <input type="text" name="title"></p>
+<p>description <input type="text" name="description"></p>
+<p>author name <input type="text" name="authorname"></p>
+<p>author website <input type="text" name="authorwebsite"></p>
+<p>title font <input type="text" name="titlefont"></p>
+<p>body font <input type="text" name="bodyfont"></p>
+<p>enter "true" if you type in Markdown <input type="text" name="flMarkdown"></p>
 <p>img <input type="url" name="img" size="40"><br></p>
 Write your post here. Hit return for new paragraph. <br/ >
 <textarea name="text" cols="60" rows="10"></textarea>
