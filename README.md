@@ -9,6 +9,7 @@ To Do
 =====
 
 * enable localStorage for `authorname`, `authorwebsite`
+* simplify script by using JSON.stringify instead of adding quotes, colons and brackets to `output` variable
 
 Update
 ======
