@@ -10,6 +10,7 @@ To Do
 
 * enable localStorage for `authorname`, `authorwebsite`
 * simplify script by using JSON.stringify instead of adding quotes, colons and brackets to `output` variable
+* Use [myjson.com api](http://myjson.com/api) to write json directly to the service (for free hosting)
 
 Update
 ======
