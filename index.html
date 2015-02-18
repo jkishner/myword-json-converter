@@ -4,6 +4,65 @@
 </head>
 <body>
 <script>
+function myjson(form) {
+var title=form.title.value;
+var description=form.description.value;
+var authorname=form.authorname.value;
+var authorwebsite=form.authorwebsite.value;
+var titlefont=form.titlefont.value;
+var bodyfont=form.bodyfont.value;
+var flMarkdown=form.flMarkdown.value;
+var img=form.img.value;
+var text=form.text.value;
+text=text.replace(/"/g, '\\"');
+essay=text.split("\n");
+var output='{';
+output+='"title": "' + title + '",';
+output+='"description": "' + description + '",';
+output+='"authorname": "' + authorname + '",';
+output+='"authorwebsite": "' + authorwebsite + '",';
+output+='"titlefont": "' + titlefont + '",';
+output+='"bodyfont": "' + bodyfont + '",';
+output+='"flMarkdown": "' + flMarkdown + '",';
+var d = new Date();
+var date = d.toUTCString();
+output+='"when": "' + date + '",';
+if (img == null || img == "") {
+	output+='"img": "http://cdn3.howtogeek.com/wp-content/uploads/2012/12/Plain-Black-Wallpaper.png",';
+	} else
+	{
+	output+='"img": "' + img+ '",';
+	}
+output+='"subs": [';
+var count = essay.length;
+count = count - 1;
+for (i=0;i<count;i++) {
+	output+='"' + essay[i] + '",';
+	}
+output+='"' + essay[i] + '"]}';
+document.getElementById("results").innerHTML=output;
+// made possible via http://youmightnotneedjquery.com
+var request = new XMLHttpRequest();
+request.open('POST', 'https://api.myjson.com/bins', true);
+request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+request.send(output);
+request.onload = function(output, textStatus, jqXHR) {
+  if (request.status >= 200 && request.status < 400) {
+    // Success!
+    var resp = request.responseText;
+  } else {
+    // We reached our target server, but it returned an error
+
+  }
+var myArray = JSON.parse(request.responseText);
+var api_url = myArray.uri;
+
+document.getElementById("myjson_reply").innerHTML=api_url;
+window.open("http://myword.io/?url=" + api_url);
+};
+}
+</script>
+<script>
 function myword(form) {
 var title=form.title.value;
 var description=form.description.value;
@@ -55,15 +114,32 @@ document.getElementById("results").innerHTML=output;
 <p>enter "true" if you type in Markdown <input type="text" name="flMarkdown"></p>
 <p>img <input type="url" name="img" size="40"><br></p>
 Write your post here. Hit return for new paragraph. <br/ >
-<textarea name="text" cols="60" rows="10"></textarea>
-<input type="button" name="button" value="convert" 
+<textarea name="text" cols="100" rows="10"></textarea>
+<br />
+<input type="button" name="button" value="convert to json" 
 onClick="myword(this.form)">
+<input type="button" value="send to myjson.com" onClick="myjson(this.form)">
 </form>
+<div class="col-md-6">
+<h2>Your JSON Output</h2>
 <p>Put the following in a text file. <br>
 Give the filename a title and follow it by <code>.json</code>. <br>
 Upload to your server, or make it shareable via Dropbox. If you use a Dropbox link, change `www.dropbox.com` to `dl.dropboxusercontent.com`.<br>
 Append that url to <code>http://myword.io/?url=</code></p>
 <textarea id="results" cols="60" rows="10"></textarea>
+</div>
+<div class="col-md-6">
+<!-- myjson area -->
+<h2>Your File Stored at myjson.com</h2>
+<p>This is where your JSON is being stored:
+<textarea id="myjson_reply" rows="1" cols="40"></textarea>
+<br/><br />
+<small>myjson.com is a service in beta that stores json files. This script uses the myjson.com api to easily store your json output so that you don't have to manually create and 
+upload a new file. However, there is no guarantee that your file will be stored "forever," so use at your own risk.</small>
+</p>
+</div>
+
+<!-- end myjson area -->
 </div>
 </body>
 </html>

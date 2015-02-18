@@ -10,7 +10,6 @@ To Do
 
 * enable localStorage for `authorname`, `authorwebsite`
 * simplify script by using JSON.stringify instead of adding quotes, colons and brackets to `output` variable
-* Use [myjson.com api](http://myjson.com/api) to write json directly to the service (for free hosting)
 
 Update
 ======
@@ -19,3 +18,8 @@ Update
 
 * added the following attributes: `authorwebsite`, `description`, `titlefont`, `bodyfont`, `flMarkdown`
 * provided default black background image if `img` is not entered
+
+**2015-02-18**
+
+* Using [myjson.com api](http://myjson.com/api) to write json directly to the service (for free hosting)
+
