@@ -1,7 +1,7 @@
 # myword-json-converter
 This is a form that outputs JSON to feed into [myWord](https://github.com/scripting/myWord)
 
-[See it in action.](http://javascript.jeffreykishner.com/myword-json-converter.html)
+[See it in action.](http://javascript.jeffreykishner.com/myword-json-converter/)
 
 More info TK. For now, [read this blog post](http://thoughts.jeffreykishner.com/a-simple-form-for-publishing-to-myword-io).
 
